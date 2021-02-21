@@ -1,44 +1,54 @@
+<?php require 'functions.php' ?>
+
 <html>
     <head>
-    <title>Welcome to news channel</title>
-    	<link rel="stylesheet" type="text/css" href="design/style.css">
+        <title>My News Site</title>
+        <link href="news-site-styles.css" rel="stylesheet" type="text/css"/>
     </head>
+
     <body>
     
     	<div class="container">
-    
-    		<div class="welcome">
-    			<h1>Latest news</h1>
-    		</div>
-    
     		<div class="news-box">
-    
+                <h1>Your News</h1>
     			<div class="news">
-    				<h2><a href="read-news.php?newsid=1">First news title here</a></h2>
-    				<p> This news short description will be displayed at this particular place. This news short description will be displayed at this particular place.</p>
-    				<span>published on Jan, 12th 2015 by zooboole</span>
+                    <?php
+                        // get the database handler
+                        $mysqli = connectdb(); 
+                        // Fetch news
+                        $stmt = $mysqli->prepare("SELECT newstitle, newstext from stories");
+
+                        if(!$stmt){
+                            printf("Query Prep Failed: %s\n", $mysqli->error);
+                            exit;
+                        }
+
+                        $stmt->execute();
+
+                        $stmt->bind_result($title, $text);
+
+                        echo "<ul>\n";
+                        while($stmt->fetch()){
+                            printf("\t<li>%s %s</li>\n",
+                                htmlspecialchars($title),
+                                htmlspecialchars($text)
+                            );
+                        }
+                        echo "</ul>\n";
+
+                        $stmt->close();
+                    ?>
+
+                    
     			</div>
-    
-    			<div class="news">
-    				<h2><a href="read-news.php?newsid=2">Second news title here</a></h2>
-    				<p>This news short description will be displayed at this particular place. This news short description will be displayed at this particular place.</p>
-    				<span>published on Jan, 12th 2015 by zooboole</span>
-    			</div>
-    
-    			<div class="news">
-    				<h2><a href="read-news.php?newsid=3">Third news title here</a></h2>
-    				<p>This news short description will be displayed at this particular place. This news short description will be displayed at this particular place.</p>
-    				<span>published on Jan, 12th 2015 by zooboole</span>
-    			</div>
-    
-    			<div class="news">
-    				<h2><a href="read-news.php?newsid=4">Fourth news title here</a></h2>
-    				<p>This news short description will be displayed at this particular place. This news short description will be displayed at this particular place.</p>
-    				<span>published on Jan, 12th 2015 by zooboole</span>
-    			</div>
-    
+
+                <div class="newstorysubmit">
+                    <a href="submitnews.php">Submit a New Story</a>
+                </div>
+
     		</div>
-    
+
     	</div>
+
     </body>
-    </html>
+</html>

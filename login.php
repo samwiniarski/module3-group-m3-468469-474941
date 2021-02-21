@@ -6,7 +6,7 @@
     </head>
     
     <body>
-        <form action="news-site.php" method="POST" className="mainForm">
+        <form action="index.php" method="POST" className="mainForm">
             <h1>Welcome to SCNN!</h1>
             <div>
                 <label for="username">Username</label>
@@ -22,9 +22,5 @@
             </div>
             
         </form>
-
-        <?php
-
-        ?>
     </body>
 </html>
