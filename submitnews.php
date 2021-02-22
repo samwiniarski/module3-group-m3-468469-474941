@@ -19,7 +19,6 @@ session_start();?>
                 <input id="title" type="text" name="title" placeholder="Title here" required>
                 
                 <input id="story" type="text" name="story" placeholder="Text here" required>
-                <!-- <input id="comment" type="text" name="comment" placeholder="Insert comment here" required> -->
 
                 <input id="link" type="text" name="link" placeholder="Link to your story">
             <!-- <input type="hidden" name="token" value=" /> -->
@@ -29,7 +28,6 @@ session_start();?>
 
         <?php
             // this allows the user to submit stories to database, which then gets rendered
-            // if(isset($_POST['title']) && isset($_POST['story']) && isset($_SESSION)) {
             if(isset($_POST['title']) && isset($_POST['story'])) {
                 $mysqli = connectdb(); 
 
@@ -71,24 +69,6 @@ session_start();?>
 
                 }
                 
-                
-
-                // if(isset($_POST['comment'])) {
-                //     $newcomment = $_POST['comment'];
-                //     $sql = "INSERT INTO comments(commentstext) VALUES(?)";
-
-                //     $stmt = $mysqli -> prepare($sql);
-                
-                //     if(!$stmt){
-                //         printf("Query Prep 2 Failed: %s\n", $mysqli->error);
-                //         exit;
-                //     } else {
-                //         echo "Query successful!";            
-                //         $stmt->bind_param('s', $newcomment);
-                //         $stmt->execute();
-                //         $stmt->close();
-                //     }
-                // }
             } 
  
         ?>

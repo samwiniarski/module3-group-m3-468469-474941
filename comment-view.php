@@ -19,27 +19,32 @@ session_start();?>
                     //select all comments associated with a specific newsid
                     $id = $_GET['id']; // get id through query string
 
+                    // $allcomments = mysqli_query($mysqli, 
+                    // "SELECT comments.commentstext FROM comments
+                    // JOIN stories ON (comments.commentid=stories.$id)");
                     $allcomments = mysqli_query($mysqli, 
-                    "SELECT comments.commentstext FROM comments
-                    JOIN stories ON (comments.commentid=stories.$id)");
+                    "SELECT * from comments");
 
                     echo "<ul>\n";
 
                     //this prints out all the comments!
                     while($data = mysqli_fetch_array($allcomments)){
-                        echo $data['commenttext'];
+                        echo $data['commentstext'];
                 ?>
                         <!-- inserting php is like diving in and out of the water
                         while swimming, even if you break out of the tags for a bit
                         the same variables are still accessible in the same file -->
                             
-                        <a href="comment-edit.php?id=<?php echo $data['commentid'];?>">Edit </a>
-                        <a href="comment-delete.php?id=<?php echo $data['commentid']; ?>">Delete</a>
+                        <a href="comment-edit.php?id=<?php echo $data['commentsid'];?>">Edit </a>
+                        <a href="comment-delete.php?id=<?php echo $data['commentsid']; ?>">Delete</a>
                 <?php
                         echo "</ul>\n";
                     }
-                    
                 ?>
+
+                <br>
+                <a href="comment-add.php">Add a Comment</a>
+                
             
 
     	</div>
