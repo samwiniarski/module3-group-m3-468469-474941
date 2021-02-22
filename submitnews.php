@@ -18,6 +18,7 @@
             <input id="title" type="text" name="title">
             <label for="story">Story</label>
             <input id="story" type="text" name="story">
+            <!-- <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" /> -->
             <button type="submit" name="submit">Submit Story</button>
         </form>
 
@@ -37,7 +38,8 @@
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 } else {
-                    echo "Query successful!";            
+                    echo "Query successful!"; 
+                    //$_SESSION['token'] = bin2hex(random_bytes(32));           
                     $stmt->bind_param('ss', $newtitle, $newstory);
                     $stmt->execute();
                     $stmt->close();

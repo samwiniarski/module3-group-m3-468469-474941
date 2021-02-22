@@ -1,4 +1,5 @@
-<?php require 'functions.php' ?>
+<?php require 'functions.php'; 
+session_start();?>
 
 <html>
     <head>

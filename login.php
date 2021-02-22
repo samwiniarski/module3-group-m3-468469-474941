@@ -6,7 +6,7 @@
     </head>
     
     <body>
-        <form action="index.php" method="POST" className="mainForm">
+        <form action="authentication.php" method="POST" className="mainForm">
             <h1>Welcome to SCNN!</h1>
             <div>
                 <label for="username">Username</label>
@@ -16,6 +16,7 @@
                 <label for="password">Password:</label>
                 <input type="text" name="password" id="password">
             </div>
+                <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" />
             <div>
                 <button type="submit" name="login">Login</button>
                 <button type="submit" name="register">Register</button>
