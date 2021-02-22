@@ -10,22 +10,11 @@ session_start();?>
     <body>
     
     	<div class="container">
+            
             <h1>Your News</h1>
             <div class="news">
                 <?php
-                    // get the database handler
                     $mysqli = connectdb(); 
-                    // Fetch news
-                    // $stmt = $mysqli->prepare("SELECT newstitle, newstext from stories");
-
-                    // if(!$stmt){
-                    //     printf("Query Prep Failed: %s\n", $mysqli->error);
-                    //     exit;
-                    // }
-
-                    // $stmt->execute();
-
-                    // $stmt->bind_result($title, $text);
                     $allstories = mysqli_query($mysqli, "SELECT * from stories");
 
                     echo "<ul>\n";
@@ -48,16 +37,13 @@ session_start();?>
                 <?php
                     }
                     echo "</ul>\n";
-
-                    $stmt->close();
                 ?>
-
-                
             </div>
-
+            
             <div class="newstorysubmit">
                 <a href="submitnews.php">Submit a New Story</a>
             </div>
+            
 
     	</div>
 
