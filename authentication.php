@@ -19,9 +19,10 @@ if(isset($_POST['register'])&& isset($_POST['username']) && isset($_POST['passwo
         $stmt->bind_param('ss', $new_user, $new_pwd);
         $stmt->execute();
         $stmt->close();
-        session_start();
-        session_id($user_id);
-        $_SESSION['user_id']=$user_id;
+        //session_id($user_id);
+        //session_start();
+        
+        //$_SESSION['user_id']=$user_id;
         header("Location: index.php");
         exit;
     }
@@ -47,8 +48,10 @@ if(isset($_POST['register'])&& isset($_POST['username']) && isset($_POST['passwo
         //if(!hash_equals($_SESSION['token'], $_POST['token'])){
         //    die("Request forgery detected");
         //}
-        session_start();
         session_id($user_id);
+        session_start();
+        $_SESSION['logged_in'] = true;
+        
         $_SESSION['user_id'] = $user_id;
         // Redirect to your target page
         header("Location: index.php");

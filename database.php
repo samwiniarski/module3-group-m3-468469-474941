@@ -8,7 +8,7 @@
 
         <?php
             function connectdb() {
-                $mysqli = new mysqli('localhost', 'root', 'password', 'newssitedata');
+                $mysqli = new mysqli('localhost', 'root', 'FISslsl4942', 'newssitedata');
 
                 if($mysqli->connect_errno) {
                     printf("Connection Failed: %s\n", $mysqli->connect_error);

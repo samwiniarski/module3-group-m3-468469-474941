@@ -11,7 +11,7 @@
 
 	$data = mysqli_fetch_array($query); // fetch data
 
-	if(isset($_POST['update'])) // when you click on update button
+	if(isset($_POST['update']) && isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true) // when you click on update button
 	{
 		//extract the new values
 		$brandnewtitle = $_POST['title'];

@@ -30,7 +30,7 @@ session_start();?>
 
         <?php
             // this allows the user to submit stories to database, which then gets rendered
-            if(isset($_POST['title']) && isset($_POST['story']) && isset($_SESSION)) {
+            if(isset($_POST['title']) && isset($_POST['story'])) {
                 $mysqli = connectdb(); 
 
                 $newtitle = $_POST['title'];
@@ -69,8 +69,8 @@ session_start();?>
                     }
                 }
             }else{
-                header("Location: login.php");
-                exit;
+                //header("Location: login.php");
+                //exit;
             }
  
         ?>
