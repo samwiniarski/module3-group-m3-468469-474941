@@ -15,3 +15,17 @@ button {
     color: white;
     font-size: 15px;
 }
+
+/* story submit css */
+.story-submit-form {
+    align-items: flex-start; 
+    margin-bottom: 20vh;
+}
+
+.story-submit-form input {
+    margin-bottom: 2vh;
+}
+
+.story-submit-form #story {
+    /* height: 15vh; */
+}

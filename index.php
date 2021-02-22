@@ -1,4 +1,4 @@
-<?php require 'functions.php' ?>
+<?php require 'database.php' ?>
 
 <html>
     <head>
@@ -28,6 +28,8 @@
                         $stmt->bind_result($title, $text);
 
                         echo "<ul>\n";
+
+                        //this prints out all the stories!
                         while($stmt->fetch()){
                             printf("\t<li>%s %s</li>\n",
                                 htmlspecialchars($title),
