@@ -9,7 +9,7 @@ if(isset($_POST['register'])&& isset($_POST['username']) && isset($_POST['passwo
    
     $new_user = $_POST['username'];//must check if username already exists??
     $new_pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $sql = "INSERT INTO users(username,hashed_password) VALUES (?, ?)";
+    $sql = "INSERT INTO users(username, pword) VALUES (?, ?)";
     $stmt = $mysqli -> prepare($sql);            
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -27,7 +27,7 @@ if(isset($_POST['register'])&& isset($_POST['username']) && isset($_POST['passwo
     }
 }else if(isset($_POST['login'])&& isset($_POST['username']) && isset($_POST['password'])){
     // Use a prepared statement
-    $sql = "SELECT COUNT(*), id, hashed_password FROM users WHERE username=?";
+    $sql = "SELECT COUNT(*), username, pword FROM users WHERE username=?";
     $stmt = $mysqli->prepare($sql);
     // Bind the parameter
     $stmt->bind_param('s', $user);
