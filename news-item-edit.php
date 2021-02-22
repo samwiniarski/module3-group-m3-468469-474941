@@ -1,5 +1,6 @@
 <?php 
 	require "database.php"; 
+	session_start();
 	// get the database handler
 	$mysqli = connectdb(); 
 	$id = $_GET['id']; // get id through query string which is passed to this file from index.php
