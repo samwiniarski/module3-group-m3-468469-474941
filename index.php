@@ -36,8 +36,9 @@ session_start();?>
                         <a href="news-item-edit.php?id=<?php echo $data['newsid'];?>">Edit</a>
                         <a href="delete.php?id=<?php echo $data['newsid']; ?>">Delete</a>
                 <?php
+                         echo '\n';
                     }
-                    echo "</ul>\n";
+                   
                 ?>
             </div>
             
