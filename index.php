@@ -44,6 +44,13 @@ session_start();?>
             <div class="newstorysubmit">
                 <a href="submitnews.php">Submit a New Story</a>
             </div>
+
+            <!-- user can logout here -->
+            <form action="logout.php" method="POST">
+            <p>
+                <input type="submit" name="logout" value="logout" />
+            </p>
+            </form>
             
 
     	</div>

@@ -31,6 +31,7 @@
 	}
 ?>
 
+<a href="index.php">Back to Main Page</a>
 
 <h3>Edit Story</h3>
 
@@ -38,7 +39,7 @@
   <label for="title">New title: </label>
   <input type="text" id="title" name="title" value="<?php echo $title?>" placeholder="Enter title" Required>
 
-  <label for="story">New story</label>
+  <label for="story">New story:</label>
   <input type="text" id="story" name="story" value="<?php echo $text?>" placeholder="Enter story..." Required>
 
   <button type="submit" name="update" value="Update">Submit</button>
