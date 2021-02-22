@@ -21,6 +21,8 @@
                 <button type="submit" name="login">Login</button>
                 <button type="submit" name="register">Register</button>
             </div>
+
+            <!-- buttons redirect to different things!! -->
             
         </form>
     </body>

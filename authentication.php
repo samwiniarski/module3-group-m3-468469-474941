@@ -4,13 +4,14 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require 'database.php';
 
- $mysqli = connectdb(); 
+$mysqli = connectdb(); 
+
 if(isset($_POST['register'])&& isset($_POST['username']) && isset($_POST['password'])){
-   
     $new_user = $_POST['username'];//must check if username already exists??
     $new_pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $sql = "INSERT INTO users(username, pword) VALUES (?, ?)";
-    $stmt = $mysqli -> prepare($sql);            
+    $stmt = $mysqli -> prepare($sql);  
+
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;
@@ -19,15 +20,20 @@ if(isset($_POST['register'])&& isset($_POST['username']) && isset($_POST['passwo
         $stmt->bind_param('ss', $new_user, $new_pwd);
         $stmt->execute();
         $stmt->close();
+
         session_start();
-        session_id($user_id);
-        $_SESSION['user_id']=$user_id;
+        $_SESSION['username']=$new_user; //deposit user in list of session variables
+        
+        // session_id($user_id);
+        
         header("Location: index.php");
         exit;
     }
-}else if(isset($_POST['login'])&& isset($_POST['username']) && isset($_POST['password'])){
-    // Use a prepared statement
+}
+
+else if(isset($_POST['login'])&& isset($_POST['username']) && isset($_POST['password'])){
     $sql = "SELECT COUNT(*), username, pword FROM users WHERE username=?";
+    $new_user = $_POST['username'];//must check if username already exists??
     $stmt = $mysqli->prepare($sql);
     // Bind the parameter
     $stmt->bind_param('s', $user);
@@ -47,9 +53,8 @@ if(isset($_POST['register'])&& isset($_POST['username']) && isset($_POST['passwo
         //if(!hash_equals($_SESSION['token'], $_POST['token'])){
         //    die("Request forgery detected");
         //}
+        $_SESSION['username'] = $new_user;
         session_start();
-        session_id($user_id);
-        $_SESSION['user_id'] = $user_id;
         // Redirect to your target page
         header("Location: index.php");
         exit;
