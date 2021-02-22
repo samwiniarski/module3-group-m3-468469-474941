@@ -1,5 +1,6 @@
 <?php require 'database.php'; 
-session_start();?>
+session_start();
+$user = $_SESSION['username'];?>
 
 <html>
     <head>
@@ -12,10 +13,14 @@ session_start();?>
     	<div class="container">
             
             <h1>Your News</h1>
+            <h3> You're logged in as <?php echo $user ?>!</h3>
             <div class="news">
                 <?php
                     $mysqli = connectdb(); 
-                    $allstories = mysqli_query($mysqli, "SELECT * from stories");
+                    // $myquery = "SELECT * from stories WHERE userid=$user";
+                    $myquery = "SELECT * from stories";
+
+                    $allstories = mysqli_query($mysqli, $myquery);
 
                     echo "<ul>\n";
 
