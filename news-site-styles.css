@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 button {
     padding: 10px;
     border: none;
