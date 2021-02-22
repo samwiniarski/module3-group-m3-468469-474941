@@ -1,24 +1,22 @@
 <?php 
 	require "database.php"; 
-	session_start();
 	// get the database handler
 	$mysqli = connectdb(); 
 	$id = $_GET['id']; // get id through query string which is passed to this file from index.php
 	//done by "posting" the variable to the url
 
 	 // select query, there will only be one that matches the id
-	$query = mysqli_query($mysqli,"select * from stories where id='$id'");
+	$query = mysqli_query($mysqli,"select * from comments where commentsid='$id'");
 
 	$data = mysqli_fetch_array($query); // fetch data
 
 	if(isset($_POST['update'])) // when you click on update button
 	{
 		//extract the new values
-		$brandnewtitle = $_POST['title'];
-		$brandnewstory = $_POST['story'];
+		$brandnewcomment = $_POST['comment'];
 		
 		//perform a query and update using those values
-		$edit = mysqli_query($mysqli,"UPDATE stories SET newstitle='$brandnewtitle', newstext='$brandnewstory' WHERE newsid='$id'");
+		$edit = mysqli_query($mysqli,"UPDATE comments SET commentstext='$brandnewcomment' WHERE commentsid='$id'");
 		
 		if($edit)
 		{
@@ -31,16 +29,11 @@
 	}
 ?>
 
-
-<h3>Edit Story</h3>
+<h3>Edit Comment</h3>
 
 <form method="POST">
-  <label for="title">New title: </label>
-  <input type="text" id="title" name="title" value="<?php echo $title?>" placeholder="Enter title" Required>
-
-  <label for="story">New story</label>
-  <input type="text" id="story" name="story" value="<?php echo $text?>" placeholder="Enter story..." Required>
+  <label for="comment">Edit comment: </label>
+  <input type="text" id="comment" name="comment" value="<?php echo $title?>" placeholder="New comment here" Required>
 
   <button type="submit" name="update" value="Update">Submit</button>
 </form>
-

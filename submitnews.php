@@ -18,15 +18,12 @@ session_start();?>
                 
           
 
-                <label for="title">Title:</label>
-                <input id="title" type="text" name="title">
-                <label for="story">Story</label>
-                <input id="story" type="text" name="story">
-                <label for="comment">Comments:</label> <br>
-                <input id="comment" type="text" name="comment">
+                <input id="title" type="text" name="title" placeholder="Title here" required>
+                
+                <input id="story" type="text" name="story" placeholder="Text here" required>
+                <input id="comment" type="text" name="comment" placeholder="Insert comment here">
 
-                <label for="link">Link to story:</label> <br>
-                <input id="link" type="text" name="link">
+                <input id="link" type="text" name="link" placeholder="Link to your story">
             <!-- <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" /> -->
             <button type="submit" name="submit">Submit Story</button>
         </form>

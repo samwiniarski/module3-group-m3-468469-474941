@@ -32,6 +32,7 @@ session_start();?>
                         while swimming, even if you break out of the tags for a bit
                         the same variables are still accessible in the same file -->
                             
+                        <a href="comment-view.php?id=<?php echo $data['newsid']; ?>">View Comments</a>
                         <a href="news-item-edit.php?id=<?php echo $data['newsid'];?>">Edit</a>
                         <a href="delete.php?id=<?php echo $data['newsid']; ?>">Delete</a>
                 <?php
