@@ -36,6 +36,18 @@ session_start();?>
                                 htmlspecialchars($title),
                                 htmlspecialchars($text)
                             );
+                    ?>
+                    <!-- inserting php is like diving in and out of the water
+                    while swimming, even if you break out of the tags for a bit
+                the same variables are still accessible in the same file -->
+                            <tr>
+                                <td><?php echo $data['id']; ?></td>
+                                <td><?php echo $data['fullname']; ?></td>
+                                <td><?php echo $data['age']; ?></td>    
+                                <td><a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a></td>
+                                <td><a href="delete.php?id=<?php echo $data['id']; ?>">Delete</a></td>
+                            </tr>	
+                    <?php
                         }
                         echo "</ul>\n";
 
