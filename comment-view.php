@@ -19,8 +19,9 @@ session_start();?>
                     //select all comments associated with a specific newsid
                     $id = $_GET['id']; // get id through query string
 
-                    // work on this!!!!!!!!!!!!!!!!!!!!
-                    $allcomments = mysqli_query($mysqli, "SELECT * from stories");
+                    $allcomments = mysqli_query($mysqli, 
+                    "SELECT comments.commentstext FROM comments
+                    JOIN stories ON (comments.commentid=stories.$id)");
 
                     echo "<ul>\n";
 
@@ -32,7 +33,7 @@ session_start();?>
                         while swimming, even if you break out of the tags for a bit
                         the same variables are still accessible in the same file -->
                             
-                        <a href="comment-edit.php?id=<?php echo $data['commentid'];?>">Edit Comment</a>
+                        <a href="comment-edit.php?id=<?php echo $data['commentid'];?>">Edit </a>
                         <a href="comment-delete.php?id=<?php echo $data['commentid']; ?>">Delete</a>
                 <?php
                         echo "</ul>\n";
