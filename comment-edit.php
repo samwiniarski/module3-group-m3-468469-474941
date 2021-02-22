@@ -34,6 +34,5 @@
 <form method="POST">
   <label for="comment">Edit comment: </label>
   <input type="text" id="comment" name="comment" value="<?php echo $title?>" placeholder="New comment here" Required>
-
   <button type="submit" name="update" value="Update">Submit</button>
 </form>

@@ -21,7 +21,7 @@ session_start();?>
                 <input id="story" type="text" name="story" placeholder="Text here" required>
                 <!-- <input id="comment" type="text" name="comment" placeholder="Insert comment here" required> -->
 
-                <!-- <input id="link" type="text" name="link" placeholder="Link to your story" required> -->
+                <input id="link" type="text" name="link" placeholder="Link to your story">
             <!-- <input type="hidden" name="token" value=" /> -->
             
             <button type="submit" name="submit">Submit Story</button>
@@ -35,26 +35,43 @@ session_start();?>
 
                 $newtitle = $_POST['title'];
                 $newstory = $_POST['story'];
-                // $newlink = $_POST['link'];
                 
-                $sql = "INSERT INTO stories(newstitle, newstext, userid) VALUES(?, ?, ?)";
+                if(isset($_POST['link'])) { 
+                    $sql = "INSERT INTO stories(newstitle, newstext, newslink, userid) VALUES(?, ?, ?, ?)";
+                    $newlink = $_POST['link'];
+                    $stmt = $mysqli -> prepare($sql);
                 
-                $stmt = $mysqli -> prepare($sql);
-                
-                if(!$stmt){
-                    printf("Query Prep Failed: %s\n", $mysqli->error);
-                    exit;
+                    if(!$stmt){
+                        printf("Query Prep Failed: %s\n", $mysqli->error);
+                        exit;
+                    } else {
+                        echo "Query successful!"; 
+                        //$_SESSION['token'] = bin2hex(random_bytes(32));           
+                        
+                        $stmt->bind_param('ssss', $newtitle, $newstory, $newlink, $_SESSION['username']);
+                        $stmt->execute();
+                        $stmt->close();
+                    }
+
                 } else {
-                    echo "Query successful!"; 
-                    echo $newtitle;
-                    echo $newstory;
-                    echo $_SESSION['username'];
-                    //$_SESSION['token'] = bin2hex(random_bytes(32));           
-                    
-                    $stmt->bind_param('sss', $newtitle, $newstory, $_SESSION['username']);
-                    $stmt->execute();
-                    $stmt->close();
+                    $sql = "INSERT INTO stories(newstitle, newstext, userid) VALUES(?, ?, ?)";
+                    $stmt = $mysqli -> prepare($sql);
+                
+                    if(!$stmt){
+                        printf("Query Prep Failed: %s\n", $mysqli->error);
+                        exit;
+                    } else {
+                        echo "Query successful!"; 
+                        //$_SESSION['token'] = bin2hex(random_bytes(32));           
+                        
+                        $stmt->bind_param('sss', $newtitle, $newstory, $_SESSION['username']);
+                        $stmt->execute();
+                        $stmt->close();
+                    }
+
                 }
+                
+                
 
                 // if(isset($_POST['comment'])) {
                 //     $newcomment = $_POST['comment'];
