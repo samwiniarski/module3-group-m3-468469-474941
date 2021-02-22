@@ -16,7 +16,7 @@
                 <label for="password">Password:</label>
                 <input type="text" name="password" id="password">
             </div>
-                <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" />
+                
             <div>
                 <button type="submit" name="login">Login</button>
                 <button type="submit" name="register">Register</button>
