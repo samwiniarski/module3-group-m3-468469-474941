@@ -1,4 +1,5 @@
-<?php require 'database.php' ?>
+<?php require 'database.php'; 
+session_start();?>
 
 <html>
     <head>

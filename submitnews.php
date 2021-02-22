@@ -14,19 +14,19 @@
         then take what's been posted & send it to the database-->
         <form class="mainForm story-submit-form" action="submitnews.php" method="POST">
             <h1>Submit a Story</h1>
-            
-                <label for="title">Title:</label> <br>
-                <input id="title" type="text" name="title">
-                <label for="story">Story:</label> <br>
-                <input id="story" type="text" name="story">
+                
+          
 
+                <label for="title">Title:</label>
+                <input id="title" type="text" name="title">
+                <label for="story">Story</label>
+                <input id="story" type="text" name="story">
                 <label for="comment">Comments:</label> <br>
                 <input id="comment" type="text" name="comment">
 
                 <label for="link">Link to story:</label> <br>
                 <input id="link" type="text" name="link">
-          
-
+            <!-- <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" /> -->
             <button type="submit" name="submit">Submit Story</button>
         </form>
 
@@ -47,7 +47,8 @@
                     printf("Query Prep Failed: %s\n", $mysqli->error);
                     exit;
                 } else {
-                    echo "Query successful!";            
+                    echo "Query successful!"; 
+                    //$_SESSION['token'] = bin2hex(random_bytes(32));           
                     $stmt->bind_param('ss', $newtitle, $newstory);
                     $stmt->execute();
                     $stmt->close();
