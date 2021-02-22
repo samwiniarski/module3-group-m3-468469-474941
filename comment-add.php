@@ -12,17 +12,17 @@ session_start();?>
 </form>
 
 <?php
-    echo $_SESSION['username'];
     if(isset($_POST['comment'])) {
+        $mysqli = connectdb(); 
         $newcomment = $_POST['comment'];
         $sql = "INSERT INTO comments(commentstext, comuserid) VALUES(?, ?)";
+
         $stmt = $mysqli -> prepare($sql);
-    
         if(!$stmt){
             printf("Query Prep Failed: %s\n", $mysqli->error);
             exit;
         } else {
-            echo "Query successful!";            
+            echo "Query successful!";         
             $stmt->bind_param('ss', $newcomment, $_SESSION['username']);
             $stmt->execute();
             $stmt->close();
