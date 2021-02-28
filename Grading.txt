@@ -1,0 +1,14 @@
+31/75
+
+-4pts users can edit and delete comments that aren't theirs
+-2pts no foreign keys in database tables
+-3pts link can't be associated with stories using a separate database field
+-2pts not all queries safe from sql injection attacks
+-3pts site doesn't follow FIEO
+-2pts html validation errors
+-5pts no CSRF tokens
+-1pts site not intuitive to navigate (redirects could be optimized)
+-1pts site not visually appealing
+-4pts all comments appear for every story
+-2pts user can only view their own stories
+-15pts lack of creative portion
